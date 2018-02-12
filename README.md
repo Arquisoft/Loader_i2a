@@ -15,3 +15,8 @@ This application uses MongoDB. For instructions on how to set it up, you can hav
 * Jorge López Fueyo (@nokutu)
 * Miguel García García (@miguelgrc)
 * Pablo García Marcos (@pineirin)
+
+# Team members 2018
+* Jesús Atorrasagasti García (@jesusatgar)
+* Juan Aza Gutiérrez (@juanaza)
+* Lorena Castillero Corriols (@lorenacasti)
