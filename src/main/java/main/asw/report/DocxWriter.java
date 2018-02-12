@@ -32,7 +32,7 @@ class DocxWriter implements ReportWriter {
                 addTitle(user, paragraph);
                 XWPFRun run2 = addText(user, paragraph);
                 document.write(outputStream);
-                log.info("Exported user with userId = " + user.getNif() + " correctly to DOCX format");
+                log.info("Exported user with userId = " + user.getIdentifier() + " correctly to DOCX format");
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
             } finally {
@@ -57,7 +57,7 @@ class DocxWriter implements ReportWriter {
         XWPFRun run = paragraph.createRun();
         //    run.setBold(true);
         run.setFontSize(14);
-        addLine(run, "Greetings: " + user.getFirstName() + " " + user.getLastName() + ".");
+        addLine(run, "Greetings: " + user.getName() + ".");
     }
 
     /**
@@ -71,16 +71,15 @@ class DocxWriter implements ReportWriter {
         run.setBold(false);
         run.setFontSize(12);
         addLine(run, "This is your personal information that we have received: ");
-        addLine(run, "Date of birth: " + user.getDateOfBirth() + ".");
-        addLine(run, "NIF: " + user.getNif() + ".");
-        addLine(run, "Nationality: " + user.getNationality() + ".");
-        addLine(run, "Address: " + user.getAddress() + ".");
+        addLine(run, "Location: " + user.getLocation() + ".");
+        addLine(run, "Email: " + user.getEmail() + ".");
+        addLine(run, "Kind: " + user.getKind() + ".");
         run.addBreak();
-        addLine(run, "Your user name is your email: " + user.getEmail());
+        addLine(run, "Your user name is your identifier: " + user.getIdentifier());
         addLine(run, "Your password is: " + user.getUnencryptedPass());
         return run;
     }
-
+    
     /**
      * Auxiliar method that Adds a line of text and a line jump.
      *

@@ -1,5 +1,6 @@
 package main.asw;
 
+import main.asw.user.GeoCords;
 import main.asw.user.User;
 import org.junit.Test;
 
@@ -22,17 +23,12 @@ public class UserTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testDateAfterToday() throws ParseException {
-        new User("P01", "P01", "p01@p01.com", parseDate("12/12/3823"), "P01", "P01", "71735454H");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
     public void testBadEmail() throws ParseException {
-        new User("P01", "P01", "badEmailWhitoutDot", parseDate("12/12/1985"), "P01", "P01", "71735454H");
+        new User("Juan Aza", new GeoCords(43.3619, 5.8494), "badEmailWhitoutDot", "71678798B", 1);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testBadNif() throws ParseException {
-        new User("P01", "P01", "p01@email.com", parseDate("12/12/1985"), "P01", "P01", "71735454J");
+    	new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juan@gmail.com", "71735454J", 1);
     }
 }

@@ -32,7 +32,7 @@ class MyPdfWriter implements ReportWriter {
                 PdfWriter.getInstance(document, fileOutputStream);
                 document.open();
                 addText(user, document);
-                log.info("Exported user with userId = " + user.getNif() + " correctly to PDF format");
+                log.info("Exported user with userId = " + user.getIdentifier() + " correctly to PDF format");
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
             } finally {
@@ -58,14 +58,13 @@ class MyPdfWriter implements ReportWriter {
      * @throws DocumentException throws a exception you aren't able to write in the document.
      */
     private void addText(User user, Document document) throws DocumentException {
-        document.add(new Paragraph("Greetings: " + user.getFirstName() + " " + user.getLastName() + "."));
+        document.add(new Paragraph("Greetings: " + user.getName() + "."));
         document.add(new Paragraph("This is your personal information that we have received: "));
-        document.add(new Paragraph("Date of birth: " + user.getDateOfBirth() + "."));
-        document.add(new Paragraph("NIF: " + user.getNif() + "."));
-        document.add(new Paragraph("Nationality: " + user.getNationality() + "."));
-        document.add(new Paragraph("Address: " + user.getAddress() + "."));
+        document.add(new Paragraph("Location: " + user.getLocation() + "."));
+        document.add(new Paragraph("Email: " + user.getEmail() + "."));
+        document.add(new Paragraph("Kind: " + user.getKind() + "."));
         document.add(new Paragraph(" "));
-        document.add(new Paragraph("Your user name is your email: " + user.getEmail()));
+        document.add(new Paragraph("Your user name is your identifier: " + user.getIdentifier()));
         document.add(new Paragraph("Your password is: " + user.getUnencryptedPass()));
     }
 }

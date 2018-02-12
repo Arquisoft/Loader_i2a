@@ -35,21 +35,19 @@ class UserDaoImpl implements UserDao {
      */
     @Override
     public boolean saveUser(User u) {
-        if (coll.find(eq("userId", u.getNif())).first() == null) {
-            Document doc = new Document("firstName", u.getFirstName())
-                    .append("lastName", u.getLastName())
+        if (coll.find(eq("userId", u.getIdentifier())).first() == null) {
+            Document doc = new Document("name", u.getName())
+            		.append("location", u.getLocation())
                     .append("email", u.getEmail())
-                    .append("address", u.getAddress())
-                    .append("nationality", u.getNationality())
-                    .append("userId", u.getNif())
-                    .append("dateOfBirth", u.getDateOfBirth())
+                    .append("userId", u.getIdentifier())
+                    .append("kind", u.getKind())
                     .append("password", u.getPassword());
             coll.insertOne(doc);
-            log.info("User with userId = " + u.getNif() + " added to the database");
+            log.info("User with userId = " + u.getIdentifier() + " added to the database");
             return true;
         }
         else{
-            log.warn("A user with userId = " + u.getNif() + " is already in the database");
+            log.warn("A user with userId = " + u.getIdentifier() + " is already in the database");
             return false;
         }
     }

@@ -5,6 +5,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodProcess;
+import main.asw.user.GeoCords;
 import main.asw.user.User;
 import org.bson.BsonDocument;
 import org.bson.Document;
@@ -65,19 +66,17 @@ public class MongoDBTest {
         MongoDatabase db = mongoClient.getDatabase("test");
         db.getCollection("users").deleteMany(new BsonDocument());
         MongoCollection<Document> coll = db.getCollection("users");
-        User u = new User("Miguel", "García", "mg@email.com", new Date(), "c/ street", "España", "71735454H");
-        Document doc = new Document("name", u.getFirstName())
-                .append("surname", u.getLastName())
+        User u = new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1);
+        Document doc = new Document("name", u.getName())
+        		.append("location", u.getLocation())
                 .append("email", u.getEmail())
-                .append("nationality", u.getNationality())
-                .append("address", u.getNationality())
-                .append("dni", u.getNif())
-                .append("date", u.getDateOfBirth())
+                .append("identifier", u.getIdentifier())
+                .append("kind", u.getKind())
                 .append("password", u.getPassword());
         coll.insertOne(doc);
 
         assertEquals(1, coll.count());
-        assertEquals("Miguel", coll.find().first().get("name"));
+        assertEquals("Juan Aza", coll.find().first().get("name"));
         assertEquals(doc.toJson(), coll.find().first().toJson());
 
         db.getCollection("users").deleteMany(new BsonDocument());

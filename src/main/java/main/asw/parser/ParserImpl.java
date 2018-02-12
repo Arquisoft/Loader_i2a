@@ -2,6 +2,7 @@ package main.asw.parser;
 
 import main.asw.repository.DBUpdate;
 import main.asw.repository.RepositoryFactory;
+import main.asw.user.GeoCords;
 import main.asw.user.User;
 import org.slf4j.LoggerFactory;
 
@@ -49,7 +50,7 @@ class ParserImpl implements Parser {
         List<User> users = new ArrayList<>();
 
         while (dataSource.nextRow()) {
-            if (dataSource.getNumberOfColumns() == 7) {
+            if (dataSource.getNumberOfColumns() == 5) {
                 try {
                     users.add(rowToUser());
                 } catch (ParseException | IllegalArgumentException e) {
@@ -68,30 +69,22 @@ class ParserImpl implements Parser {
 
     private User rowToUser() throws ParseException {
         String name = dataSource.getCell(0);
-        String surname = dataSource.getCell(1);
+        String[] loc = dataSource.getCell(1).split(",");
+        GeoCords location = new GeoCords(Double.parseDouble(loc[0]), Double.parseDouble(loc[1]));
         String email = dataSource.getCell(2);
-        String birthDateString = dataSource.getCell(3);
-        Date date = parseDate(birthDateString);
-        String address = dataSource.getCell(4);
-        String nationality = dataSource.getCell(5);
-        String dni = dataSource.getCell(6);
+        String identifier = dataSource.getCell(3);
+        int kind = (int)Double.parseDouble(dataSource.getCell(4));
+        
+        /**
+         * private String name;
+			private GeoCords location;
+			private String email;
+			private String identifier;
+			private int kind;
+         */
 
-        return new User(name,
-                surname,
-                email,
-                date,
-                address,
-                nationality,
-                dni);
+        return new User(name, location, email, identifier, kind);
 
-    }
-
-    private Date parseDate(String birthDateString) throws ParseException {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        Date date;
-        df.setLenient(false);
-        date = df.parse(birthDateString);
-        return date;
     }
 
     public List<User> getUsers() {

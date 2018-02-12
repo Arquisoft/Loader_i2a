@@ -43,7 +43,9 @@ class ApachePoiDataContainer implements CellLikeDataContainer {
                 .getRow(currentRow)
                 .getPhysicalNumberOfCells();
 
-        while (wb.getSheetAt(currentSheet).getRow(currentRow).getCell(numberOfColumns - 1).getStringCellValue().equals(""))
+        /*while (wb.getSheetAt(currentSheet).getRow(currentRow).getCell(numberOfColumns - 1).getStringCellValue().equals(""))
+            numberOfColumns--;*/
+        while (wb.getSheetAt(currentSheet).getRow(currentRow).getCell(numberOfColumns - 1).toString().equals(""))
             numberOfColumns--;
 
     }
@@ -78,10 +80,14 @@ class ApachePoiDataContainer implements CellLikeDataContainer {
     @Override
     public String getCell(int index) {
         if (index < getNumberOfColumns()) {
-            return wb.getSheetAt(currentSheet)
+            /*return wb.getSheetAt(currentSheet)
                     .getRow(currentRow)
                     .getCell(index)
-                    .getStringCellValue();
+                    .getStringCellValue();*/
+        	return wb.getSheetAt(currentSheet)
+                    .getRow(currentRow)
+                    .getCell(index)
+                    .toString();
         } else {
             throw new IllegalArgumentException("The index is out of range");
         }

@@ -11,86 +11,62 @@ import java.util.Date;
  * @author MIGUEL
  */
 public class User {
-
-    private String firstName, lastName, email, address, nationality, nif;
-    private Date dateOfBirth;
+	private String name;
+	private GeoCords location;
+	private String email;
+	private String identifier;
+	private int kind;
+	
     private String password;
     private String unencryptedPass;   //For (TODO) letter generation. Not stored on DB.
 
-
-    public User(String firstName, String lastName, String email, Date dateOfBirth, String address, String nationality, String nif) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-
-        this.setEmail(email);
-        this.setDateOfBirth(dateOfBirth);
-        this.setNif(nif);
-
-        this.address = address;
-        this.nationality = nationality;
-
-        this.unencryptedPass = EncryptionUtils.getInstance().generatePassword();
+    public User(String name, GeoCords location, String email, String identifier, int kind) {
+		super();
+		this.name = name;
+		this.location = location;
+		this.setEmail(email);
+		this.setNif(identifier);
+		this.kind = kind;
+		this.unencryptedPass = EncryptionUtils.getInstance().generatePassword();
         this.password = EncryptionUtils.getInstance().encryptPassword(unencryptedPass);
-    }
-
-    private boolean validateDate(Date date) {
+	}
+    
+	private boolean validateDate(Date date) {
         return !date.after(new Date());
-    }
+    }	
 
     @Override
-    public String toString() {
-        return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", nationality='" + nationality + '\'' +
-                ", nif='" + nif + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                '}';
-    }
+	public String toString() {
+		return "User [name=" + name + ", location=" + location + ", email=" + email + ", identifier=" + identifier
+				+ ", kind=" + kind + "]";
+	}
 
-    public String getUnencryptedPass() {
+	public String getUnencryptedPass() {
         return unencryptedPass;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public String getName() {
+		return name;
+	}   
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getLocation() {
+		return location.toString();
+	}
 
-    public String getEmail() {
+	public String getEmail() {
         return email;
-    }
+    }	
 
-    public String getAddress() {
-        return address;
-    }
+    public String getIdentifier() {
+		return identifier;
+	}
 
-    public String getNationality() {
-        return nationality;
-    }
+	public int getKind() {
+		return kind;
+	}
 
-    public String getNif() {
-        return nif;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public String getPassword() {
+	public String getPassword() {
         return password;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        if (validateDate(dateOfBirth))
-            this.dateOfBirth = dateOfBirth;
-        else
-            throw new IllegalArgumentException("The date is after today");
     }
 
     public void setEmail(String email) {
@@ -109,7 +85,7 @@ public class User {
 
     public void setNif(String nif) {
         if (validateNif(nif))
-            this.nif = nif;
+            this.identifier = nif;
         else
             throw new IllegalArgumentException("The nif is not well formed");
     }
