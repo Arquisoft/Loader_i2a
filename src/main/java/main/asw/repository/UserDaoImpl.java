@@ -44,6 +44,11 @@ public class UserDaoImpl implements UserDao {
     	}
     }
 	
+    /**
+     * Saves a given user in the database if there ins't already one with the same userId
+     * @param u User to be saved
+     * 
+     */
 	@Override
 	public boolean saveUser(User u) {
 		if (coll.find(eq("userId", u.getIdentifier())).first() == null) {
