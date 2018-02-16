@@ -1,6 +1,7 @@
 package main.asw.repository;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -34,9 +35,9 @@ public class PersistenceTest {
     @Before
     public void setUp(){
         dbUpdate = RepositoryFactory.getDBUpdate();
-        mongoClient = new MongoClient("localhost", 27017);
-        db = mongoClient.getDatabase("aswdb");
-        coll = db.getCollection("users");
+        mongoClient = new MongoClient(new MongoClientURI("mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a"));
+        db = mongoClient.getDatabase("db_loader_i2a");
+        coll = db.getCollection("loader_i2a_collection");
         users = new ArrayList<>();
     }
 

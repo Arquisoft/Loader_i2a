@@ -1,6 +1,7 @@
 package main.asw.repository;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import de.flapdoodle.embed.mongo.MongodExecutable;
@@ -24,8 +25,7 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class MongoDBTest {
 
-    private static final String MONGO_HOST = "localhost";
-    private static final int MONGO_PORT = 27017;
+    private static final String MONGO_HOST = "mongodb://admin:EIIASW2018$@ds237808.mlab.com:37808/db_test";
 //    private static final String IN_MEM_CONNECTION_URL = MONGO_HOST + ":" + MONGO_PORT;
 
     private MongodExecutable mongodExe;
@@ -42,7 +42,7 @@ public class MongoDBTest {
         //MongodStarter runtime = MongodStarter.getDefaultInstance();
         //mongodExe = runtime.prepare(new MongodConfig(Version.V2_0_5, MONGO_PORT, Network.localhostIsIPv6()));
         //mongod = mongodExe.start();
-        mongoClient = new MongoClient(MONGO_HOST, MONGO_PORT);
+    	mongoClient = new MongoClient(new MongoClientURI(MONGO_HOST));
     }
 
     /**
@@ -63,7 +63,7 @@ public class MongoDBTest {
      */
     @Test
     public void testUserInsertion() {
-        MongoDatabase db = mongoClient.getDatabase("test");
+        MongoDatabase db = mongoClient.getDatabase("db_test");
         db.getCollection("users").deleteMany(new BsonDocument());
         MongoCollection<Document> coll = db.getCollection("users");
         User u = new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1);
