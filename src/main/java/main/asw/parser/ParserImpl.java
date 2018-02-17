@@ -55,7 +55,7 @@ class ParserImpl implements Parser {
             if (dataSource.getNumberOfColumns() == 5) {
                 try {
                     users.add(rowToUser());
-                } catch (ParseException | IllegalArgumentException e) {
+                } catch (ParseException e) {
                     //Thrown by the Date Parser
                     log.error("ParseError: Error reading line " + dataSource.toString() +
                             " " + e.getMessage(), dataSource.getCurrentRow());

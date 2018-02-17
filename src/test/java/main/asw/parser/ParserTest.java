@@ -15,7 +15,7 @@ public class ParserTest {
 
 	private final static String BASE_PATH = "src/test/resources/";
 	private final static String TEST_OK_FILE_NAME = "pruebaUsuarios.xls";
-	private final static String TEST_WRONG_AGENT_TYPE = "pruebaUsuariosWrongTypes.xls";
+	private final static String TEST_WRONG_AGENT_TYPE = "pruebaUsuarios2.xls";
 	private final static String TEST_BAD_DATE_AFTER_TODAY = "badDateAfterToday.xls";
 	private final static String TEST_BAD_DATE_FORMAT = "badDateFormat.xls";
 	private final static String TEST_NO_FOUND_FILE = "noExiste";
@@ -49,7 +49,7 @@ public class ParserTest {
 		}
 	}
 	
-	//@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testWrongTypes() throws IOException, ParseException {
 		try {
 			parser = ParserFactory.getParser(BASE_PATH + TEST_WRONG_AGENT_TYPE,
@@ -83,7 +83,7 @@ public class ParserTest {
 		assertEquals(0, parser.getUsers().size());
 	}
 
-	@Test
+	@Test(expected = NumberFormatException.class)
 	public void testWithParseErrors() throws IOException, ParseException {
 		parser = ParserFactory.getParser(BASE_PATH + TEST_WITH_ERRORS,
 				BASE_PATH + TEST_CSV_AGENTS);
