@@ -82,8 +82,7 @@ class ParserImpl implements Parser {
 		int kind = (int) Double.parseDouble(dataSource.getCell(4));
 		if (identifyAgentType(kind)) {
 			return new User(name, location, email, identifier, kind);
-		} else
-			throw new IllegalArgumentException("The kind of Agent is not correct");
+		} else throw new IllegalArgumentException("The kind of Agent is not correct");
 	}
     
     /**

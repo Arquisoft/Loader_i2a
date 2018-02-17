@@ -15,8 +15,8 @@ import static junit.framework.TestCase.assertEquals;
 public class ParserTest {
 
 	private final static String BASE_PATH = "src/test/resources/";
-
 	private final static String TEST_OK_FILE_NAME = "pruebaUsuarios.xls";
+	private final static String TEST_WRONG_AGENT_TYPE = "pruebaUsuariosWrongTypes.xls";
 	private final static String TEST_BAD_DATE_AFTER_TODAY = "badDateAfterToday.xls";
 	private final static String TEST_BAD_DATE_FORMAT = "badDateFormat.xls";
 	private final static String TEST_NO_FOUND_FILE = "noExiste";
@@ -48,6 +48,18 @@ public class ParserTest {
 			assertEquals(baseEmail + index + "@prueba.es", user.getEmail());
 			assertEquals(kind, user.getKind());
 		}
+	}
+	
+	//@Test
+	public void testWrongTypes() throws IOException, ParseException {
+		try {
+			parser = ParserFactory.getParser(BASE_PATH + TEST_WRONG_AGENT_TYPE,
+					BASE_PATH + TEST_CSV_AGENTS);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		parser.readList();
+
 	}
 
 	@Test(expected = IOException.class)
@@ -84,5 +96,7 @@ public class ParserTest {
 		parser = ParserFactory.getParser(BASE_PATH + TEST_OK_FILE_NAME,
 				BASE_PATH + TEST_NO_FOUND_FILE);
 	}
+	
+
 
 }
