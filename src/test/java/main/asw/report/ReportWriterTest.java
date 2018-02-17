@@ -273,7 +273,6 @@ public class ReportWriterTest {
         new File("Generated").delete();
     }
 
-
     private String[] readerTxt(File file) {
         String[] lines = new String[9];
         BufferedReader bufferedReader = null;

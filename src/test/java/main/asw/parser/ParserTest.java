@@ -22,6 +22,7 @@ public class ParserTest {
     private final static String TEST_NO_FOUND_FILE = "noExiste";
     private static final String TEST_LESS_LINES = "lessLines.xls";
     private static final String TEST_MORE_LINES = "moreLines.xls";
+    private static final String TEST_WITH_ERRORS = "test-errors.xls";
 
 
     private ParserImpl parser;
@@ -99,6 +100,13 @@ public class ParserTest {
         parser.readList();
         assertEquals(0, parser.getUsers().size());
     }
+    
+    @Test
+    public void testWithParseErrors() throws IOException, ParseException {
+        parser = ParserFactory.getParser(BASE_PATH + TEST_WITH_ERRORS);
+        parser.readList();
+    }
+
 
 /* Not needed. It's being tested on PersistenceTest class */
 //    @Test
