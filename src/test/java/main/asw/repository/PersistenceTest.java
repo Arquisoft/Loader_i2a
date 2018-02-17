@@ -78,8 +78,6 @@ public class PersistenceTest {
         users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1));
 
         dbUpdate.insert(users);
-        
-        dbUpdate.writeReport();
 
         newCount = coll.count();
     }

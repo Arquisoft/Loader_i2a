@@ -37,7 +37,7 @@ public class User {
 
     @Override
 	public String toString() {
-		return "User [name=" + name + ", location=" + location.toString() + ", email=" + email + ", identifier=" + identifier
+		return "User [name=" + name + ", location=" + location + ", email=" + email + ", identifier=" + identifier
 				+ ", kind=" + kind + "]";
 	}
 
