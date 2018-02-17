@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public class ParserFactory {
 
-    public static ParserImpl getParser(String filename) throws IOException {
-        return new ParserImpl(filename);
+	public static ParserImpl getParser(String filename, String csvFilename) throws IOException {
+        return new ParserImpl(filename,csvFilename);
     }
 }

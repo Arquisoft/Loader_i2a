@@ -20,12 +20,12 @@ public class LoadUsers {
     private final static Logger log = LoggerFactory.getLogger(LoadUsers.class);
 
     public static void main(String... args) {
-        if (args.length == 2) {
+        if (args.length == 3) {
             try {
                 PersistenceFactory.getUserDAO().setMongoHost(args[1]);
 
 
-                Parser parser = ParserFactory.getParser(args[0]);
+                Parser parser = ParserFactory.getParser(args[0],args[2]);
                 parser.readList();
                 parser.insert();
             } catch (IOException e) {
@@ -39,7 +39,7 @@ public class LoadUsers {
     private static void printUsage() {
         System.out.println(
                 "Invalid parameters. You must only have:\n" +
-                "\t <xls path> \t <mongo host>"
+                "\t <xls path> \t <mongo host> \t <CSV path>"
         );
     }
 
