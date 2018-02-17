@@ -1,6 +1,5 @@
 package main.asw.parser;
 
-import main.asw.user.GeoCords;
 import main.asw.user.User;
 import org.junit.Test;
 

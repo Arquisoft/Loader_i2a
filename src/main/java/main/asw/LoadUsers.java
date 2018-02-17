@@ -23,8 +23,6 @@ public class LoadUsers {
         if (args.length == 3) {
             try {
                 PersistenceFactory.getUserDAO().setMongoHost(args[1]);
-
-
                 Parser parser = ParserFactory.getParser(args[0],args[2]);
                 parser.readList();
                 parser.insert();

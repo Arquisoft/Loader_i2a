@@ -8,7 +8,6 @@ import java.util.Properties;
 import org.bson.Document;
 import org.slf4j.LoggerFactory;
 
-import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;

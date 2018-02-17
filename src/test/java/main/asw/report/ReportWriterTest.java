@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
@@ -307,22 +306,24 @@ public class ReportWriterTest {
     private String[] readerDocx(File file) {
         String[] lines = new String[9];
         FileInputStream fileInputStream = null;
+        XWPFDocument document = null;
         try {
             fileInputStream = new FileInputStream(file);
-            XWPFDocument document = new XWPFDocument(fileInputStream);
+            document = new XWPFDocument(fileInputStream);
 
             List<XWPFParagraph> paragraphs = document.getParagraphs();
 
             for (XWPFParagraph paragraph : paragraphs) {
                lines = paragraph.getText().split("\n");
             }
-
+            
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }finally {
             try {
                 if (fileInputStream != null) {
                     fileInputStream.close();
+                    document.close();
                 }
             } catch (IOException ex) {
                 log.error(ex.getMessage(), ex);

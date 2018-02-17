@@ -33,6 +33,7 @@ class DocxWriter implements ReportWriter {
                 XWPFRun run2 = addText(user, paragraph);
                 document.write(outputStream);
                 log.info("Exported user with userId = " + user.getIdentifier() + " correctly to DOCX format");
+                document.close();
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
             } finally {

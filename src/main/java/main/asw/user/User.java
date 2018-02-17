@@ -2,9 +2,6 @@ package main.asw.user;
 
 import main.asw.encryption.EncryptionUtils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -21,7 +18,7 @@ public class User {
 	private int kind;
 	
     private String password;
-    private String unencryptedPass;   //For (TODO) letter generation. Not stored on DB.
+    private String unencryptedPass;
 
     public User(String name, GeoCords location, String email, String identifier, int kind) {
 		super();
