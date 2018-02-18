@@ -27,7 +27,7 @@ sudo apt-get install maven
 In order to run the application in batch format we should first generate the .jar file needed in the running process. This will all be done by typing the following command while been located in the folder where we have the pom.xml file.
 
 ```
-cd (location of pom.xml
+cd (location of pom.xml)
 mvn package
 ```
 The next process is to move the generated .jar file one level up from the target folder with the following command.
