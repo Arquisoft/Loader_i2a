@@ -2,15 +2,8 @@ package main.asw.user;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.junit.Test;
-
 import main.asw.LoadUsers;
 import main.asw.user.GeoCords;
 import main.asw.user.User;
@@ -20,14 +13,6 @@ import main.asw.user.User;
  */
 public class UserTest {
 
-    private Date parseDate(String birthDateString) throws ParseException {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        Date date;
-        df.setLenient(false);
-        date = df.parse(birthDateString);
-        return date;
-    }
-    
     @Test
     public void testLoadUsers(){
     	String file1 = "src/test/resources/pruebaUsuarios.xls";

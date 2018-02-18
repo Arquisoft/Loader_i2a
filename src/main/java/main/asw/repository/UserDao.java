@@ -16,5 +16,5 @@ public interface UserDao {
      */
     boolean saveUser(User u);
 
-    void setMongoHost(String arg);
+    void setMongoHost(String host);
 }

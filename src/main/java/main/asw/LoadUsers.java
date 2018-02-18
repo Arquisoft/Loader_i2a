@@ -29,8 +29,8 @@ public class LoadUsers {
 				parser.insert();
 			} catch (IOException e) {
 				printUsage();
-				log.error("Error connecting to the database or parsing the file. \n Arguments: MongoHOST:"
-						+ args[1] + " Files:" + args[0] + ", " + args[2]);
+				log.error("Error connecting to the database or parsing the file. \n Arguments: MongoHOST: " + args[1] + 
+							"Files: " + args[0] + ", " + args[2]);
 			}
 		} else {
 			printUsage();

@@ -21,17 +21,22 @@ public class UserDaoImpl implements UserDao {
 	private MongoClient mongoClient;
 	private MongoDatabase db;
     private MongoCollection<Document> coll;
-    private Properties properties;
+    //private Properties properties;
     
     public UserDaoImpl() {
-    	if(loadProperties()) {
+    	/*if(loadProperties()) {
     		this.mongoClient = new MongoClient(new MongoClientURI("mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a"));
-    		this.db = mongoClient.getDatabase(properties.getProperty("database"));
-    		this.coll = db.getCollection(properties.getProperty("collection"));
-    	}
+    		//this.db = mongoClient.getDatabase(properties.getProperty("database"));
+    		//this.coll = db.getCollection(properties.getProperty("collection"));
+    		this.db = mongoClient.getDatabase("db_loader_i2a");
+    		this.coll = db.getCollection("loader_i2a_collection");
+    	}*/
+    	this.mongoClient = new MongoClient(new MongoClientURI("mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a"));
+		this.db = mongoClient.getDatabase("db_loader_i2a");
+		this.coll = db.getCollection("loader_i2a_collection");
     }
     
-    private boolean loadProperties() {
+    /*private boolean loadProperties() {
     	try {
     		FileInputStream input = new FileInputStream("src/main/resources/database.properties");
     		this.properties = new Properties();
@@ -41,7 +46,7 @@ public class UserDaoImpl implements UserDao {
     		log.error("Error loading database.properties file");
     		return false;
     	}
-    }
+    }*/
 	
     /**
      * Saves a given user in the database if there ins't already one with the same userId
@@ -68,13 +73,15 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void setMongoHost(String arg) {
-		if(loadProperties()) {
-    		this.mongoClient = new MongoClient(new MongoClientURI("mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a"));
+	public void setMongoHost(String host) {
+		/*if(loadProperties()) {
+    		this.mongoClient = new MongoClient(new MongoClientURI(host));
     		this.db = mongoClient.getDatabase(properties.getProperty("database"));
     		this.coll = db.getCollection(properties.getProperty("collection"));
-    	}
-
+    	}*/
+		this.mongoClient = new MongoClient(new MongoClientURI("mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a"));
+		this.db = mongoClient.getDatabase("db_loader_i2a");
+		this.coll = db.getCollection("loader_i2a_collection");
 	}
 
 }

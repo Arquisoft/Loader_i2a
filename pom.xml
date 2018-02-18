@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.uniovi.asw</groupId>
-	<artifactId>citizensLoader_i2b</artifactId>
-	<name>citizensLoader_i2b</name>
+	<artifactId>Loader_i2a</artifactId>
+	<name>Loader_i2b</name>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
-	<description>Citizens SubSystem</description>
+	<description>Agents Loader</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
