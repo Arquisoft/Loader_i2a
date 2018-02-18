@@ -4,13 +4,10 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import de.flapdoodle.embed.mongo.MongodExecutable;
-import de.flapdoodle.embed.mongo.MongodProcess;
 import main.asw.user.GeoCords;
 import main.asw.user.User;
 import org.bson.BsonDocument;
 import org.bson.Document;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,10 +21,7 @@ import static junit.framework.TestCase.assertEquals;
 public class MongoDBTest {
 
     private static final String MONGO_HOST = "mongodb://admin:EIIASW2018$@ds237808.mlab.com:37808/db_test";
-//    private static final String IN_MEM_CONNECTION_URL = MONGO_HOST + ":" + MONGO_PORT;
 
-    private MongodExecutable mongodExe;
-    private MongodProcess mongod;
     private MongoClient mongoClient;
 
     /**
@@ -37,23 +31,7 @@ public class MongoDBTest {
      */
     @Before
     public void setUp() throws Exception {
-        //MongodStarter runtime = MongodStarter.getDefaultInstance();
-        //mongodExe = runtime.prepare(new MongodConfig(Version.V2_0_5, MONGO_PORT, Network.localhostIsIPv6()));
-        //mongod = mongodExe.start();
     	mongoClient = new MongoClient(new MongoClientURI(MONGO_HOST));
-    }
-
-    /**
-     * Shuts down the in-memory DB
-     *
-     * @throws Exception
-     */
-    @After
-    public void tearDown() throws Exception {
-        /*if (mongod != null) {
-            mongod.stop();
-            mongodExe.stop();
-        }*/
     }
 
     /**
