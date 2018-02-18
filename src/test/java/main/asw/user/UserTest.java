@@ -3,6 +3,7 @@ package main.asw.user;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,6 +11,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import main.asw.LoadUsers;
 import main.asw.user.GeoCords;
 import main.asw.user.User;
 
@@ -24,6 +26,22 @@ public class UserTest {
         df.setLenient(false);
         date = df.parse(birthDateString);
         return date;
+    }
+    
+    @Test
+    public void testLoadUsers(){
+    	String file1 = "src/test/resources/pruebaUsuarios.xls";
+  		String host = "mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a";
+    	String file2 = "src/test/resources/agentTypes.csv";
+    	LoadUsers.main(file1, host, file2);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void testLoadUsersWrongArguments(){
+    	String file1 = "src/test/resources/pruebaUsuarios.xls";
+  		String host = "mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a";
+    	String file2 = "src/test/resources/agentTypes.csv";
+    	LoadUsers.main(file1, host, file2, "hello");
     }
     
     @Test

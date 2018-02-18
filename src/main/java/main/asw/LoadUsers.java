@@ -3,6 +3,7 @@ package main.asw;
 import main.asw.parser.Parser;
 import main.asw.parser.ParserFactory;
 import main.asw.repository.PersistenceFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,10 +35,11 @@ public class LoadUsers {
 		} else {
 			printUsage();
 			log.error("Wrong number of parameters during the main execution");
+			throw new IllegalArgumentException("Wrong number of parameters");
 		}
 	}
 
-	private static void printUsage() {
+	private static void printUsage(){
 		System.out.println("Invalid parameters. You must only have:\n"
 				+ "\t <xls path> \t <mongo host> \t <CSV path>");
 	}
