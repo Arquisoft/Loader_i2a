@@ -25,12 +25,12 @@ class DocxWriter implements ReportWriter {
         FileOutputStream outputStream = null;
         for (User user : users) {
             try {
-                outputStream = new FileOutputStream("Generated/GeneratedDocx/" + user.getEmail() + ".docx");
+                outputStream = new FileOutputStream("Generated/GeneratedDocx/" + user.getIdentifier() + ".docx");
                 XWPFDocument document = new XWPFDocument();
                 XWPFParagraph paragraph = document.createParagraph();
                 paragraph.setAlignment(ParagraphAlignment.LEFT);
                 addTitle(user, paragraph);
-                XWPFRun run2 = addText(user, paragraph);
+                addText(user, paragraph);
                 document.write(outputStream);
                 log.info("Exported user with userId = " + user.getIdentifier() + " correctly to DOCX format");
                 document.close();

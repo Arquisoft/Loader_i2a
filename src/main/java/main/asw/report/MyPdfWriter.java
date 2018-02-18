@@ -27,7 +27,7 @@ class MyPdfWriter implements ReportWriter {
         FileOutputStream fileOutputStream = null;
         for (User user : users) {
             try {
-                fileOutputStream = new FileOutputStream("Generated/GeneratedPdf/" + user.getEmail() + ".pdf");
+                fileOutputStream = new FileOutputStream("Generated/GeneratedPdf/" + user.getIdentifier() + ".pdf");
                 document = new Document();
                 PdfWriter.getInstance(document, fileOutputStream);
                 document.open();
