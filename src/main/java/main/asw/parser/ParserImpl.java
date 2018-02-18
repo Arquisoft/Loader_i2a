@@ -37,7 +37,9 @@ class ParserImpl implements Parser {
             loadData();
         } catch (IOException e) {
             log.error("Error handling the file");
-        }
+        } catch (ParseException e) {
+        	log.error("Error parsing the file");
+		}
     }
 
     @Override
@@ -48,18 +50,12 @@ class ParserImpl implements Parser {
     }
 
 
-    private void loadData() throws IOException {
+    private void loadData() throws IOException, ParseException {
         List<User> users = new ArrayList<>();
 
         while (dataSource.nextRow()) {
             if (dataSource.getNumberOfColumns() == 5) {
-                try {
                     users.add(rowToUser());
-                } catch (ParseException e) {
-                    //Thrown by the Date Parser
-                    log.error("ParseError: Error reading line " + dataSource.toString() +
-                            " " + e.getMessage(), dataSource.getCurrentRow());
-                }
             } else {
                 log.error("ParseError: Error reading line " + dataSource.toString() +
                         " the number of columns is different than expected", dataSource.getCurrentRow());
