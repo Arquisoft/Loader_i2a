@@ -2,7 +2,6 @@ package main.asw.user;
 
 import main.asw.encryption.EncryptionUtils;
 
-import java.util.Date;
 
 /**
  * Created by nicolas on 3/02/17.
@@ -30,10 +29,6 @@ public class User {
 		this.unencryptedPass = EncryptionUtils.getInstance().generatePassword();
         this.password = EncryptionUtils.getInstance().encryptPassword(unencryptedPass);
 	}
-    
-	private boolean validateDate(Date date) {
-        return !date.after(new Date());
-    }	
 
     @Override
 	public String toString() {

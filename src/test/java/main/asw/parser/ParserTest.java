@@ -16,8 +16,6 @@ public class ParserTest {
 	private final static String BASE_PATH = "src/test/resources/";
 	private final static String TEST_OK_FILE_NAME = "pruebaUsuarios.xls";
 	private final static String TEST_WRONG_AGENT_TYPE = "pruebaUsuarios2.xls";
-	private final static String TEST_BAD_DATE_AFTER_TODAY = "badDateAfterToday.xls";
-	private final static String TEST_BAD_DATE_FORMAT = "badDateFormat.xls";
 	private final static String TEST_NO_FOUND_FILE = "noExiste";
 	private static final String TEST_LESS_LINES = "lessLines.xls";
 	private static final String TEST_MORE_LINES = "moreLines.xls";
