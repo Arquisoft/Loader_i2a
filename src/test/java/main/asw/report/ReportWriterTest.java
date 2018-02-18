@@ -40,9 +40,9 @@ public class ReportWriterTest {
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         textWriter.writeReport(users);
 
-        File file = new File("Generated/GeneratedTxt/juanaza@gmail.com.txt");
-        File file2 = new File("Generated/GeneratedTxt/lorenacastillero@gmail.com.txt");
-        File file3 = new File("Generated/GeneratedTxt/jesus@gmail.com.txt");
+        File file = new File("Generated/GeneratedTxt/71678798B.txt");
+        File file2 = new File("Generated/GeneratedTxt/84078892T.txt");
+        File file3 = new File("Generated/GeneratedTxt/54693254J.txt");
         File file4 = new File("juan@gmail.com.txt");
 
         assertEquals(true, file.exists());
@@ -89,9 +89,9 @@ public class ReportWriterTest {
         ReportWriter docxWriter = ReportFactory.createDocxWriter();
         docxWriter.writeReport(users);
 
-        File file = new File("Generated/GeneratedDocx/juanaza@gmail.com.docx");
-        File file2 = new File("Generated/GeneratedDocx/lorenacastillero@gmail.com.docx");
-        File file3 = new File("Generated/GeneratedDocx/jesus@gmail.com.docx");
+        File file = new File("Generated/GeneratedDocx/71678798B.docx");
+        File file2 = new File("Generated/GeneratedDocx/84078892T.docx");
+        File file3 = new File("Generated/GeneratedDocx/54693254J.docx");
         File file4 = new File("juan@gmail.com.txt");
 
         assertEquals(true, file.exists());
@@ -140,9 +140,9 @@ public class ReportWriterTest {
         ReportWriter pdfWriter = ReportFactory.createPdfWriter();
         pdfWriter.writeReport(users);
 
-        File file = new File("Generated/GeneratedPdf/juanaza@gmail.com.pdf");
-        File file2 = new File("Generated/GeneratedPdf/lorenacastillero@gmail.com.pdf");
-        File file3 = new File("Generated/GeneratedPdf/jesus@gmail.com.pdf");
+        File file = new File("Generated/GeneratedPdf/71678798B.pdf");
+        File file2 = new File("Generated/GeneratedPdf/84078892T.pdf");
+        File file3 = new File("Generated/GeneratedPdf/54693254J.pdf");
         File file4 = new File("juan@gmail.com.txt");
 
         assertEquals(true, file.exists());
@@ -150,9 +150,9 @@ public class ReportWriterTest {
         assertEquals(true, file3.exists());
         assertEquals(false, file4.exists());
 
-        String filename1 = "Generated/GeneratedPdf/juanaza@gmail.com.pdf";
-        String filename2 = "Generated/GeneratedPdf/lorenacastillero@gmail.com.pdf";
-        String filename3 = "Generated/GeneratedPdf/jesus@gmail.com.pdf";
+        String filename1 = "Generated/GeneratedPdf/71678798B.pdf";
+        String filename2 = "Generated/GeneratedPdf/84078892T.pdf";
+        String filename3 = "Generated/GeneratedPdf/54693254J.pdf";
 
 
         String[] lines = readerPdf(filename1);
@@ -200,14 +200,14 @@ public class ReportWriterTest {
         docxWriter.writeReport(users);
         pdfWriter.writeReport(users);
 
-        File file = new File("Generated/GeneratedTxt/juanaza@gmail.com.txt");
-        File file2 = new File("Generated/GeneratedTxt/jesus@gmail.com.txt");
-        File file3 = new File("Generated/GeneratedDocx/juanaza@gmail.com.docx");
-        File file4 = new File("Generated/GeneratedDocx/jesus@gmail.com.docx");
-        File file5 = new File("Generated/GeneratedPdf/juanaza@gmail.com.pdf");
-        File file6 = new File("Generated/GeneratedPdf/jesus@gmail.com.pdf");
-        File file7 = new File("juan@gmail.com.txt");
-        File file8 = new File("jesus@gmail.com.pdf");
+        File file = new File("Generated/GeneratedTxt/71678798B.txt");
+        File file2 = new File("Generated/GeneratedTxt/54693254J.txt");
+        File file3 = new File("Generated/GeneratedDocx/71678798B.docx");
+        File file4 = new File("Generated/GeneratedDocx/54693254J.docx");
+        File file5 = new File("Generated/GeneratedPdf/71678798B.pdf");
+        File file6 = new File("Generated/GeneratedPdf/54693254J.pdf");
+        File file7 = new File("71678798B.txt");
+        File file8 = new File("54693254J.pdf");
 
         assertEquals(true, file.exists());
         assertEquals(true, file2.exists());
@@ -243,13 +243,13 @@ public class ReportWriterTest {
         assertTrue(lines[3].contains("Email: jesus@gmail.com"));
         assertTrue(lines[7].contains("Your password is: "));
         
-        lines = readerPdf("Generated/GeneratedPdf/juanaza@gmail.com.pdf");
+        lines = readerPdf("Generated/GeneratedPdf/71678798B.pdf");
         assertTrue(lines[0].contains("Greetings: Juan Aza."));
         assertTrue(lines[1].contains("This is your personal information that we have received: "));
         assertTrue(lines[7].contains("Your password is: "));
         contraseña3 = lines[7];
         
-        lines = readerPdf("Generated/GeneratedPdf/jesus@gmail.com.pdf");
+        lines = readerPdf("Generated/GeneratedPdf/54693254J.pdf");
         assertTrue(lines[0].contains("Greetings: Jesus Atorrasagasti."));
         assertTrue(lines[3].contains("Email: jesus@gmail.com"));
         assertTrue(lines[7].contains("Your password is: "));
