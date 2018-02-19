@@ -19,67 +19,70 @@ import java.util.List;
  */
 class ParserImpl implements Parser {
 
-    private final static org.slf4j.Logger log = LoggerFactory.getLogger(Parser.class);
+	private final static org.slf4j.Logger log = LoggerFactory.getLogger(Parser.class);
 
-    private CellLikeDataContainer dataSource;
-    private String csvFile;
-    private List<User> users;
+	private CellLikeDataContainer dataSource;
+	private String csvFile;
+	private List<User> users;
 
-    ParserImpl(String filename, String csvFilename) throws IOException {
+	ParserImpl(String filename, String csvFilename) throws IOException {
 		this.dataSource = new ApachePoiDataContainer(filename);
 		this.csvFile = csvFilename;
 	}
 
-
-    @Override
-    public void readList() {
-        try {
-            loadData();
-        } catch (IOException e) {
-            log.error("Error handling the file");
-        } catch (ParseException e) {
-        	log.error("Error parsing the file");
+	@Override
+	public void readList() {
+		try {
+			loadData();
+		} catch (IOException e) {
+			log.error("Error handling the file");
+		} catch (ParseException e) {
+			log.error("Error parsing the file");
 		}
-    }
+	}
 
-    @Override
-    public void insert() {
-        DBUpdate dbupdate = RepositoryFactory.getDBUpdate();
-        dbupdate.insert(users);
-        dbupdate.writeReport();
-    }
+	@Override
+	public void insert() {
+		DBUpdate dbupdate = RepositoryFactory.getDBUpdate();
+		dbupdate.insert(users);
+		dbupdate.writeReport();
+	}
 
+	private void loadData() throws IOException, ParseException {
+		List<User> users = new ArrayList<>();
 
-    private void loadData() throws IOException, ParseException {
-        List<User> users = new ArrayList<>();
+		while (dataSource.nextRow()) {
+			if (dataSource.getNumberOfColumns() == 5) {
+				users.add(rowToUser());
+			} else {
+				log.error(
+						"ParseError: Error reading line " + dataSource.toString() + " , number of rows: "
+								+ dataSource.getNumberOfRows() + " , number of columns: "
+								+ dataSource.getNumberOfColumns() + "the number of columns is different than expected",
+						dataSource.getCurrentRow());
+			}
 
-        while (dataSource.nextRow()) {
-            if (dataSource.getNumberOfColumns() == 5) {
-                    users.add(rowToUser());
-            } else {
-                log.error("ParseError: Error reading line " + dataSource.toString() +
-                        " the number of columns is different than expected", dataSource.getCurrentRow());
-            }
+		}
+		this.users = users;
+	}
 
-        }
-        this.users = users;
-    }
-
-    private User rowToUser() throws ParseException {
+	private User rowToUser() throws ParseException {
 		String name = dataSource.getCell(0);
 		String[] loc = dataSource.getCell(1).split(",");
-		GeoCords location = new GeoCords(Double.parseDouble(loc[0]),
-				Double.parseDouble(loc[1]));
+		GeoCords location = new GeoCords(Double.parseDouble(loc[0]), Double.parseDouble(loc[1]));
 		String email = dataSource.getCell(2);
 		String identifier = dataSource.getCell(3);
 		int kind = (int) Double.parseDouble(dataSource.getCell(4));
 		if (identifyAgentType(kind)) {
 			return new User(name, location, email, identifier, kind);
-		} else throw new IllegalArgumentException("The kind of Agent is not correct");
+		} else
+			throw new IllegalArgumentException("The kind of Agent is not correct");
 	}
-    
-    /**
-	 * This method parses the CSV file in order to make sure that the type of agent is allowed
+
+	/**
+	 * This method parses the CSV file in order to make sure that the type of agent
+	 * is allowed
+	 * 
 	 * @param kind
 	 * @return true if it exists
 	 */
@@ -102,8 +105,8 @@ class ParserImpl implements Parser {
 		return false;
 	}
 
-    public List<User> getUsers() {
-        return users;
-    }
+	public List<User> getUsers() {
+		return users;
+	}
 
 }
