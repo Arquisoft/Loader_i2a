@@ -5,11 +5,11 @@
 [![codecov](https://codecov.io/gh/Arquisoft/Loader_i2a/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/Loader_i2a)
 
 ## Setup
-As our code uses MongoDB although we have created an online instance at [mlab] (https://mlab.com/) the user will not have to install nothing related to it. We can say that the program is close to be ready to use, the only thin that will be needed is to download/install [Maven](https://maven.apache.org/).
+As our code uses MongoDB although we have created an online instance at [mlab](https://mlab.com/) the user will not have to install nothing related to it. We can say that the program is close to be ready to use, the only thin that will be needed is to download/install [Maven](https://maven.apache.org/).
 
 ## How to download and install Maven
 ### Windows
-Download Maven (binary zip archive format) from the following [link] (https://maven.apache.org/).
+Download Maven (binary zip archive format) from the following [link](https://maven.apache.org/).
 
 Once you have downloaded it, create a folder named "maven" in "C:\" this is a safe place of your computer and ensures you will not remove the files containing maven accidentally, after you will have to extract the downloaded zip into the "maven" folder created. 
 
@@ -55,9 +55,9 @@ java -jar .jar .xls mongoHost .csv
 
 
 ## Team members 2018
-* Jesús Atorrasagasti García [@jesusatgar]
-* Juan Aza Gutiérrez [@juanaza] (https://github.com/juanaza)
-* Lorena Castillero Corriols [@lorenacasti] (https://github.com/lorenacasti)
+* Jesús Atorrasagasti García [@jesusatgar](https://github.com/jesusatgar)
+* Juan Aza Gutiérrez [@juanaza](https://github.com/juanaza)
+* Lorena Castillero Corriols [@lorenacasti](https://github.com/lorenacasti)
 
 ## Team members
 * Nicolás Pascual González (@nicolaspascual)
