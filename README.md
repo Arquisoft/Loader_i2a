@@ -47,14 +47,15 @@ cd ..
 ```
 
 ### Running the applicaiton
-In order to run the application move the .xls and .csv files that are going to be used to the location where the .jar file is. TO run the application you will have to specify in this concrete order .xls mongoHOST .csv. In our case as we have a running instance of MongoDB in mlab.com we use "mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a" as our host
+In order to run the application move the .xls and .csv files that are going to be used to the location where the .jar file is. TO run the application you will have to specify in this concrete order .xls mongoHOST .csv. 
+The user can choose to either run a "localhost" instance of mongoDB or either use mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a" as their host
 ```
 java -jar .jar .xls mongoHost .csv
 ```
 
 
 ## Team members 2018
-* Jesús Atorrasagasti García [@jesusatgar] (https://github.com/jesusatgar)
+* Jesús Atorrasagasti García [@jesusatgar]
 * Juan Aza Gutiérrez [@juanaza] (https://github.com/juanaza)
 * Lorena Castillero Corriols [@lorenacasti] (https://github.com/lorenacasti)
 
