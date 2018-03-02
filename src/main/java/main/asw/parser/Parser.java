@@ -14,6 +14,6 @@ public interface Parser {
     /**
      * Inserts the data into the database.
      */
-    void insert();
+    void insert(String host);
 
 }

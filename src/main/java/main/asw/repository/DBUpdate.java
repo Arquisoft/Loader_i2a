@@ -10,7 +10,7 @@ public interface DBUpdate {
      * Inserts each one of the given users into the database
      * @param users
      */
-    void insert(List<User> users);
+    void insert(List<User> users, String host);
 
     /**
      * Generates the reports for the users

@@ -42,9 +42,9 @@ class ParserImpl implements Parser {
 	}
 
 	@Override
-	public void insert() {
+	public void insert(String host) {
 		DBUpdate dbupdate = RepositoryFactory.getDBUpdate();
-		dbupdate.insert(users);
+		dbupdate.insert(users, host);
 		dbupdate.writeReport();
 	}
 

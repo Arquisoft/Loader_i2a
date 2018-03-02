@@ -14,8 +14,9 @@ class DBUpdateImpl implements DBUpdate {
     private List<User> correctUsers;
 
     @Override
-    public void insert(List<User> users) {
+    public void insert(List<User> users, String host) {
         UserDao ud = PersistenceFactory.getUserDAO();
+        ud.setMongoHost(host);
         this.correctUsers = new ArrayList<>();
         for (User u : users) {
             if(ud.saveUser(u)) {

@@ -69,11 +69,19 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void setMongoHost(String host) {
-		if(loadProperties()) {
-    		this.mongoClient = new MongoClient(new MongoClientURI(host));
-    		this.db = mongoClient.getDatabase(properties.getProperty("database"));
-    		this.coll = db.getCollection(properties.getProperty("collection"));
-    	}
+		if(host.equals("localhost")) {
+			mongoClient = new MongoClient(host, 27017);
+	        db = mongoClient.getDatabase("aswdb");
+	        coll = db.getCollection("users");
+		}
+		else {
+			if(loadProperties()) {
+	    		this.mongoClient = new MongoClient(new MongoClientURI(host));
+	    		this.db = mongoClient.getDatabase(properties.getProperty("database"));
+	    		this.coll = db.getCollection(properties.getProperty("collection"));
+	    	}
+		}
+		
 	}
 
 }

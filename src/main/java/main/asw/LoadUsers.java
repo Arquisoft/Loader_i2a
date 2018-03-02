@@ -26,7 +26,7 @@ public class LoadUsers {
 				PersistenceFactory.getUserDAO().setMongoHost(args[1]);
 				Parser parser = ParserFactory.getParser(args[0], args[2]);
 				parser.readList();
-				parser.insert();
+				parser.insert(args[1]);
 			} catch (IOException e) {
 				printUsage();
 				log.error("Error connecting to the database or parsing the file. \n Arguments: MongoHOST: " + args[1] + 
