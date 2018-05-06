@@ -12,11 +12,11 @@ import main.asw.user.User;
  * Created by nicolas on 18/02/17 for citizensLoader0.
  */
 public class UserTest {
-
+	String mongoUri = "mongodb://admin:aswadmin2018@ds159489.mlab.com:59489/aswdb";
     @Test
     public void testLoadUsers(){
     	String file1 = "src/test/resources/pruebaUsuarios.xls";
-  		String host = "mongodb://admin:admin@ds263109.mlab.com:63109/pruebasasw";
+  		String host = mongoUri;
     	String file2 = "src/test/resources/agentTypes.csv";
     	LoadUsers.main(file1, host, file2);
     }
@@ -24,7 +24,7 @@ public class UserTest {
     @Test(expected = IllegalArgumentException.class)
     public void testLoadUsersWrongArguments(){
     	String file1 = "src/test/resources/pruebaUsuarios.xls";
-  		String host = "mongodb://admin:admin@ds263109.mlab.com:63109/pruebasasw";
+  		String host = mongoUri;
     	String file2 = "src/test/resources/agentTypes.csv";
     	LoadUsers.main(file1, host, file2, "hello");
     }
