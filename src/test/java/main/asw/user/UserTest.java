@@ -16,7 +16,7 @@ public class UserTest {
     @Test
     public void testLoadUsers(){
     	String file1 = "src/test/resources/pruebaUsuarios.xls";
-  		String host = "mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a";
+  		String host = "mongodb://admin:admin@ds263109.mlab.com:63109/pruebasasw";
     	String file2 = "src/test/resources/agentTypes.csv";
     	LoadUsers.main(file1, host, file2);
     }
@@ -24,7 +24,7 @@ public class UserTest {
     @Test(expected = IllegalArgumentException.class)
     public void testLoadUsersWrongArguments(){
     	String file1 = "src/test/resources/pruebaUsuarios.xls";
-  		String host = "mongodb://admin:EIIASW2018$@ds229448.mlab.com:29448/db_loader_i2a";
+  		String host = "mongodb://admin:admin@ds263109.mlab.com:63109/pruebasasw";
     	String file2 = "src/test/resources/agentTypes.csv";
     	LoadUsers.main(file1, host, file2, "hello");
     }
@@ -32,11 +32,12 @@ public class UserTest {
     @Test
 	public void testCorrectUser() throws ParseException {
 		GeoCords gc = new GeoCords(43.3619, 5.8494);
-		User u = new User("Juan Aza", gc, "juan@gmail.com", "71678798B", 1);
+		User u = new User("Juan Aza", gc, "juan@gmail.com", "71678798B", 1, "PERSON");
 		assertEquals(u.getName(), "Juan Aza");
 		assertEquals(u.getEmail(), "juan@gmail.com");
 		assertEquals(u.getKind(), 1);
 		assertEquals(u.getLocation(), gc.toString());
+		assertEquals(u.getKindCode(),"PERSON");
 		assertEquals(u.toString(), "User [name=" + u.getName() + ", location=" + gc.toString() + ", email="
 				+ u.getEmail() + ", identifier=" + u.getIdentifier() + ", kind=" + u.getKind() + "]");
 		assertTrue(gc.getLat() == 43.3619);
@@ -45,11 +46,11 @@ public class UserTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testBadEmail() throws ParseException {
-        new User("Juan Aza", new GeoCords(43.3619, 5.8494), "badEmailWhitoutDot", "71678798B", 1);
+        new User("Juan Aza", new GeoCords(43.3619, 5.8494), "badEmailWhitoutDot", "71678798B", 1, "person");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testBadNif() throws ParseException {
-    	new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juan@gmail.com", "71735454J", 1);
+    	new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juan@gmail.com", "71735454J", 1,"person");
     }
 }

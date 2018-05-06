@@ -42,12 +42,13 @@ public class MongoDBTest {
         MongoDatabase db = mongoClient.getDatabase("test");
         db.getCollection("users").deleteMany(new BsonDocument());
         MongoCollection<Document> coll = db.getCollection("users");
-        User u = new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1);
+        User u = new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1, "PERSON");
         Document doc = new Document("name", u.getName())
         		.append("location", u.getLocation())
                 .append("email", u.getEmail())
                 .append("identifier", u.getIdentifier())
-                .append("kind", u.getKind())
+                .append("kind", u.getKindCode())
+                .append("kindCode", u.getKind())
                 .append("password", u.getPassword());
         coll.insertOne(doc);
 

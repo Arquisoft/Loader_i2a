@@ -33,9 +33,9 @@ public class ReportWriterTest {
         dir.mkdirs();
 
         List<User> users = new ArrayList<>();
-        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1));
-        users.add(new User("Lorena Castillero", new GeoCords(43.3619, 5.8494), "lorenacastillero@gmail.com", "84078892T", 1));
-        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1));
+        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1, "PERSON"));
+        users.add(new User("Lorena Castillero", new GeoCords(43.3619, 5.8494), "lorenacastillero@gmail.com", "84078892T", 1, "PERSON"));
+        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1, "PERSON"));
 
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         textWriter.writeReport(users);
@@ -82,9 +82,9 @@ public class ReportWriterTest {
 
         List<User> users = new ArrayList<>();
 
-        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1));
-        users.add(new User("Lorena Castillero", new GeoCords(43.3619, 5.8494), "lorenacastillero@gmail.com", "84078892T", 1));
-        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1));
+        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1, "PERSON"));
+        users.add(new User("Lorena Castillero", new GeoCords(43.3619, 5.8494), "lorenacastillero@gmail.com", "84078892T", 1, "PERSON"));
+        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1, "PERSON"));
 
         ReportWriter docxWriter = ReportFactory.createDocxWriter();
         docxWriter.writeReport(users);
@@ -133,9 +133,9 @@ public class ReportWriterTest {
 
         List<User> users = new ArrayList<>();
 
-        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1));
-        users.add(new User("Lorena Castillero", new GeoCords(43.3619, 5.8494), "lorenacastillero@gmail.com", "84078892T", 1));
-        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1));
+        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1, "PERSON"));
+        users.add(new User("Lorena Castillero", new GeoCords(43.3619, 5.8494), "lorenacastillero@gmail.com", "84078892T", 1, "PERSON"));
+        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1, "PERSON"));
 
         ReportWriter pdfWriter = ReportFactory.createPdfWriter();
         pdfWriter.writeReport(users);
@@ -190,8 +190,8 @@ public class ReportWriterTest {
 
         List<User> users = new ArrayList<>();
 
-        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1));
-        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1));
+        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1, "PERSON"));
+        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1, "PERSON"));
 
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         ReportWriter docxWriter = ReportFactory.createDocxWriter();

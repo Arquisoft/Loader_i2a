@@ -67,13 +67,13 @@ public class PersistenceTest {
     private void insertUsers(){
         oldCount = coll.count();
         
-        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1));
-        users.add(new User("Lorena Castillero", new GeoCords(43.3619, 5.8494), "lorenacastillero@gmail.com", "84078892T", 1));
-        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1));
-        users.add(new User("Pepe Antonio", new GeoCords(43.3619, 5.8494), "pepe@gmail.com", "23635383P", 1));
+        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1, "PERSON"));
+        users.add(new User("Lorena Castillero", new GeoCords(43.3619, 5.8494), "lorenacastillero@gmail.com", "84078892T", 1, "PERSON"));
+        users.add(new User("Jesus Atorrasagasti", new GeoCords(43.3619, 5.8494), "jesus@gmail.com", "54693254J", 1, "PERSON"));
+        users.add(new User("Pepe Antonio", new GeoCords(43.3619, 5.8494), "pepe@gmail.com", "23635383P", 1, "PERSON"));
         
         //Same userId
-        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1));
+        users.add(new User("Juan Aza", new GeoCords(43.3619, 5.8494), "juanaza@gmail.com", "71678798B", 1, "PERSON"));
 
         dbUpdate.insert(users, "localhost");
         

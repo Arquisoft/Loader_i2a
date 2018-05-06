@@ -55,7 +55,8 @@ public class UserDaoImpl implements UserDao {
             		.append("location", u.getLocation())
                     .append("email", u.getEmail())
                     .append("userId", u.getIdentifier())
-                    .append("kind", u.getKind())
+                    .append("kind", u.getKindCode())
+                    .append("kindCode", u.getKind())
                     .append("password", u.getPassword());
             coll.insertOne(doc);
             log.info("User with userId = " + u.getIdentifier() + " added to the database");
