@@ -73,8 +73,9 @@ class ParserImpl implements Parser {
 		String email = dataSource.getCell(2);
 		String identifier = dataSource.getCell(3);
 		int kind = (int) Double.parseDouble(dataSource.getCell(4));
-		if (identifyAgentType(kind)) {
-			return new User(name, location, email, identifier, kind);
+		String kindCode = identifyAgentType(kind);
+		if (kindCode!=null) {
+			return new User(name, location, email, identifier, kind, kindCode);
 		} else
 			throw new IllegalArgumentException("The kind of Agent is not correct");
 	}
@@ -86,23 +87,23 @@ class ParserImpl implements Parser {
 	 * @param kind
 	 * @return true if it exists
 	 */
-	private boolean identifyAgentType(int kind) {
+	private String identifyAgentType(int kind) {
 		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 			String line = "";
 			while ((line = br.readLine()) != null) {
 				// use comma as separator
 				String[] agentType = line.split(",");
 				if (kind == Integer.valueOf(agentType[0])) {
-					return true;
+					return agentType[1];
 				} else
 					continue;
 			}
 			br.close();
-			return false;
+			return null;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	public List<User> getUsers() {

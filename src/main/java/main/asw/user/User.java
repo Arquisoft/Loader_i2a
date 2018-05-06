@@ -15,11 +15,12 @@ public class User {
 	private String email;
 	private String identifier;
 	private int kind;
+	private String kindCode;
 	
     private String password;
     private String unencryptedPass;
 
-    public User(String name, GeoCords location, String email, String identifier, int kind) {
+    public User(String name, GeoCords location, String email, String identifier, int kind, String kindCode) {
 		super();
 		this.name = name;
 		this.location = location;
@@ -28,6 +29,7 @@ public class User {
 		this.kind = kind;
 		this.unencryptedPass = EncryptionUtils.getInstance().generatePassword();
         this.password = EncryptionUtils.getInstance().encryptPassword(unencryptedPass);
+        this.kindCode = kindCode;
 	}
 
     @Override
@@ -99,4 +101,8 @@ public class User {
         }
         return res;
     }
+
+	public String getKindCode() {
+		return kindCode;
+	}
 }
